@@ -16,6 +16,19 @@ class ResNet34Wrapper:
         # this must be a nn.Parameter
         self.model.fc.bias = torch.nn.Parameter(torch.randn(self.model.fc.out_features), requires_grad=True)  # same with the bias
 
+class VGG16Wrapper:
+
+    def __init__(self, out_classes_len, checkpoint=None):
+        self.checkpoint_file = checkpoint
+        self.model = torchvision.models.vgg16(weights=None)
+        self.model_image_net = torchvision.models.vgg16(weights=None)
+        self.model.fc.out_features = out_classes_len
+        self.model.fc.weight = torch.nn.Parameter(
+            torch.randn(self.model.fc.out_features, self.model.fc.in_features),
+            requires_grad=True)
+        # this must be a nn.Parameter
+        self.model.fc.bias = torch.nn.Parameter(torch.randn(self.model.fc.out_features), requires_grad=True)  # same with the bias
+
 # Custom ResNet Model
 class BasicBlock(nn.Module):
     expansion = 1
