@@ -13,6 +13,8 @@ def train_model(model, optimizer, criterion, train_loader, val_loader, num_epoch
         running_loss = 0.0
 
         for inputs, labels in train_loader:
+            print(inputs)
+            print(labels)
             inputs, labels = inputs.to(device), labels.to(device)
             optimizer.zero_grad()
             outputs = model(inputs)
