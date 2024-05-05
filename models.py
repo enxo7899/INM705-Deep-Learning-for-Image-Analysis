@@ -120,6 +120,3 @@ class BasicBlock(nn.Module):
 #         x = self.fc(x)
 
 #         return x
-
-# def resnet18(num_classes):
-#     return ResNet(BasicBlock, [2, 2, 2, 2], num_classes)
